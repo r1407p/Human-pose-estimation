@@ -6,8 +6,8 @@ import keras
 def basic(embedding,outputsize):
 
     embedding = keras.layers.Flatten()(embedding)
-    layer = keras.layers.Dense(64, activation=tf.nn.relu6)(embedding)
-    layer = keras.layers.Dense(32, activation=tf.nn.relu6)(layer)
+    #layer = keras.layers.Dense(64, activation=tf.nn.relu6)(embedding)
+    layer = keras.layers.Dense(32, activation=tf.nn.relu6)(embedding)
     outputs = keras.layers.Dense(outputsize, activation="softmax")(layer)
     
     return outputs
@@ -47,19 +47,4 @@ def CNN(embedding,outputsize):
 
     # Output layer
     outputs = keras.layers.Dense(outputsize, activation="softmax")(dropout2)
-    return outputs
-
-def RNN(embedding,outputsize):
-    rnn = keras.layers.SimpleRNN(128, activation=tf.nn.relu)(embedding)
-
-    # Dense layers
-    dense1 = keras.layers.Dense(256, activation=tf.nn.relu)(rnn)
-    dropout1 = keras.layers.Dropout(0.5)(dense1)
-    dense2 = keras.layers.Dense(128, activation=tf.nn.relu)(dropout1)
-    dropout2 = keras.layers.Dropout(0.5)(dense2)
-    dense3 = keras.layers.Dense(64, activation=tf.nn.relu)(dropout2)
-
-    # Output layer
-    outputs = keras.layers.Dense(outputsize, activation='softmax')(dense3)
-    
     return outputs
