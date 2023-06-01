@@ -1,17 +1,20 @@
 import tensorflow as tf
 import keras
 
+
+
 def basic(embedding,outputsize):
-    layer = keras.layers.Dense(128, activation=tf.nn.relu6)(embedding)
-    layer = keras.layers.Dropout(0.5)(layer)
-    layer = keras.layers.Dense(64, activation=tf.nn.relu6)(layer)
-    layer = keras.layers.Dropout(0.5)(layer)
+
+    embedding = keras.layers.Flatten()(embedding)
+    #layer = keras.layers.Dense(64, activation=tf.nn.relu6)(embedding)
+    layer = keras.layers.Dense(32, activation=tf.nn.relu6)(embedding)
     outputs = keras.layers.Dense(outputsize, activation="softmax")(layer)
     
     return outputs
 
 def DNN(embedding,outputsize):
     
+    embedding = keras.layers.Flatten()(embedding)
     layer = keras.layers.Dense(256, activation=tf.nn.relu)(embedding)
     layer = keras.layers.BatchNormalization()(layer)
     layer = keras.layers.Dropout(0.4)(layer)
