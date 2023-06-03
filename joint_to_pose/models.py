@@ -16,15 +16,12 @@ def DNN(embedding,outputsize):
     
     embedding = keras.layers.Flatten()(embedding)
     layer = keras.layers.Dense(256, activation=tf.nn.relu)(embedding)
-    layer = keras.layers.BatchNormalization()(layer)
     layer = keras.layers.Dropout(0.4)(layer)
 
     layer = keras.layers.Dense(128, activation=tf.nn.relu)(layer)
-    layer = keras.layers.BatchNormalization()(layer)
     layer = keras.layers.Dropout(0.4)(layer)
 
     layer = keras.layers.Dense(64, activation=tf.nn.relu)(layer)
-    layer = keras.layers.BatchNormalization()(layer)
     layer = keras.layers.Dropout(0.4)(layer)
 
     outputs = keras.layers.Dense(outputsize, activation="softmax")(layer)
