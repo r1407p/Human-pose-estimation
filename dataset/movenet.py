@@ -256,7 +256,7 @@ class Movenet(object):
 
   def _crop_and_resize(
       self, image: np.ndarray, crop_region: Dict[(str, float)],
-      crop_size) -> np.ndarray:
+      crop_size: (int, int)) -> np.ndarray:
     """Crops and resize the image to prepare for the model input."""
     y_min, x_min, y_max, x_max = [
         crop_region['y_min'], crop_region['x_min'], crop_region['y_max'],
@@ -284,7 +284,7 @@ class Movenet(object):
 
   def _run_detector(
       self, image: np.ndarray, crop_region: Dict[(str, float)],
-      crop_size)) -> np.ndarray:
+      crop_size: (int, int)) -> np.ndarray:
     """Runs model inference on the cropped region.
 
     The function runs the model inference on the cropped region and updates
