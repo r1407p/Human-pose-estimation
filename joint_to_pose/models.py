@@ -3,14 +3,6 @@ import keras
 
 
 
-def basic(embedding,outputsize):
-
-    embedding = keras.layers.Flatten()(embedding)
-    #layer = keras.layers.Dense(64, activation=tf.nn.relu6)(embedding)
-    layer = keras.layers.Dense(32, activation=tf.nn.relu6)(embedding)
-    outputs = keras.layers.Dense(outputsize, activation="softmax")(layer)
-    
-    return outputs
 
 def DNN(embedding,outputsize):
     
